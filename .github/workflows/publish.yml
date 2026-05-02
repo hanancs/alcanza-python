@@ -30,3 +30,25 @@ jobs:
       run: python -m build
     - name: Publish distribution 📦 to PyPI
       uses: pypa/gh-action-pypi-publish@release/v1
+
+  publish-to-github-packages:
+    name: Publish Python 🐍 distribution 📦 to GitHub Packages
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.x"
+    - name: Install pypa/build
+      run: pip install build --user
+    - name: Build a binary wheel and a source tarball
+      run: python -m build
+    - name: Publish distribution 📦 to GitHub Packages
+      uses: pypa/gh-action-pypi-publish@release/v1
+      with:
+        repository-url: https://pypi.pkg.github.com/${{ github.repository_owner }}/${{ github.event.repository.name }}
+        password: ${{ secrets.GITHUB_TOKEN }}
