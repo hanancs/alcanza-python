@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "alcanza-check"
+version = "0.1.0"
+authors = [
+  { name = "Your Name", email = "your.email@example.com" },
+]
+description = "A comprehensive network connectivity checker CLI (ICMP, TCP, DNS, SSL)."
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "rich>=13.0.0",
+]
+
+[project.scripts]
+alcanza-check = "alcanza_check.main:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
