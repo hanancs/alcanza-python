@@ -6,7 +6,7 @@ on:
 
 jobs:
   build-n-publish:
-    name: Build and publish Python 🐍 distribution 📦 to PyPI
+    name: Build and publish Python distribution to PyPI
     runs-on: ubuntu-latest
     permissions:
       # This permission is mandatory for trusted publishing
@@ -28,11 +28,11 @@ jobs:
         --user
     - name: Build a binary wheel and a source tarball
       run: python -m build
-    - name: Publish distribution 📦 to PyPI
+    - name: Publish distribution to PyPI
       uses: pypa/gh-action-pypi-publish@release/v1
 
   publish-to-github-packages:
-    name: Publish Python 🐍 distribution 📦 to GitHub Packages
+    name: Publish Python distribution to GitHub Packages
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -47,7 +47,7 @@ jobs:
       run: pip install build --user
     - name: Build a binary wheel and a source tarball
       run: python -m build
-    - name: Publish distribution 📦 to GitHub Packages
+    - name: Publish distribution to GitHub Packages
       uses: pypa/gh-action-pypi-publish@release/v1
       with:
         repository-url: https://pypi.pkg.github.com/${{ github.repository_owner }}/${{ github.event.repository.name }}
