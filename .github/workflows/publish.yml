@@ -47,8 +47,11 @@ jobs:
       run: pip install build --user
     - name: Build a binary wheel and a source tarball
       run: python -m build
-    - name: Publish distribution to GitHub Packages
+    - name: Publish distribution 📦 to GitHub Packages
       uses: pypa/gh-action-pypi-publish@release/v1
       with:
-        repository-url: https://pypi.pkg.github.com/${{ github.repository_owner }}/${{ github.event.repository.name }}
+        repository-url: https://pypi.pkg.github.com/${{ github.repository }}
+        username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
+        attestations: false
+
