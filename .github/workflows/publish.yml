@@ -51,7 +51,7 @@ jobs:
       uses: pypa/gh-action-pypi-publish@release/v1
       with:
         repository-url: https://pypi.pkg.github.com/${{ github.repository }}
-        username: ${{ github.actor }}
+        user: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
         attestations: false
 
